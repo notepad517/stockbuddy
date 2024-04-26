@@ -29,3 +29,6 @@ urlpatterns = [
     path('predict',predictticket),
     path('finalresult/<str:ticker_value>/<str:number_of_days>/', finalresult),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

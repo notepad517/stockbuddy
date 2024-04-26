@@ -17,3 +17,4 @@ application = get_wsgi_application()
 
 WSGI_APPLICATION = 'api.wsgi.app'
 
+app = application
