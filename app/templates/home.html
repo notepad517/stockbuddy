@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+
+{%load static%}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Codescandy" />
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="{%static 'geeks/dist/assets/images/favicon/favicon.ico'%}" />
+
+  <!-- darkmode js -->
+  <script src="{%static 'geeks/dist/assets/js/vendors/darkMode.js'%}"></script>
+
+  <!-- Libs CSS -->
+  <link href="{%static 'geeks/dist/assets/fonts/feather/feather.css'%}" rel="stylesheet" />
+  <link href="{%static 'geeks/dist/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'geeks/dist/assets/libs/simplebar/dist/simplebar.min.css'%}" rel="stylesheet" />
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{%static 'geeks/dist/assets/css/theme.min.css'%}" />
+
+  <link rel="canonical" href="https://geeksui.codescandy.com/geeks/index.html" />
+  <link href="{%static 'geeks/dist/assets/libs/tiny-slider/dist/tiny-slider.css'%}" rel="stylesheet" />
+
+  <script src="https://kit.fontawesome.com/1d9a14d3ec.js" crossorigin="anonymous"></script>
+
+  <title>Stocks Buddy</title>
+</head>
+
+<body>
+  <main>
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="/home" style="display: flex; align-items: center; justify-content: center;">
+          <img src="{%static 'geeks/dist/assets/images/svg/graph.svg'%}" alt="Stocks" style="height: 50px;" />
+          <p style="margin-top: 16px; margin-left: 10px; font-weight: 600;">Stocks Buddy</p>
+        </a>
+        <!-- Mobile view nav wrap -->
+        <div class="ms-auto d-flex align-items-center order-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-light btn-icon rounded-circle d-flex align-items-center" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+              <i class="bi theme-icon-active"></i>
+              <span class="visually-hidden bs-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bs-theme-text">
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                  <i class="bi theme-icon bi-sun-fill"></i>
+                  <span class="ms-2">Light</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                  <i class="bi theme-icon bi-moon-stars-fill"></i>
+                  <span class="ms-2">Dark</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                  <i class="bi theme-icon bi-circle-half"></i>
+                  <span class="ms-2">Auto</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbar-default">
+          <ul class="navbar-nav mt-3 mt-lg-0" style="gap: 16px;">
+            <a href="/home#trendingSection">Trending Stocks</a>
+            <a href="/predict">Predictor</a>
+            <a href="/home#news">News Section</a>
+            <a href="/allticket">All tickets</a>
+          </ul>
+          <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+            <span class="position-absolute ps-3 search-icon">
+              <i class="fe fe-search"></i>
+            </span>
+            <label for="search" class="visually-hidden"></label>
+            <input type="search" id="search" class="form-control ps-6" placeholder="Search stocks" />
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <section class="bg-primary">
+      <div class="container">
+        <!-- Hero Section -->
+        <div class="row align-items-center g-0">
+          <div class="col-xl-5 col-lg-6 col-md-12">
+            <div class="py-7 py-lg-0">
+              <h1 class="text-white display-4 fw-bold">Welcome to Your Favourite Stocks Application</h1>
+              <p class="text-white-50 mb-4 lead">We help you to achieve greater height , Get accurate prediction to your next stocks</p>
+              <a href="/home#trendingSection" class="btn btn-dark">Trending Stocks</a>
+              <a href="/predict" class="btn btn-white">Stocks Predictor</a>
+            </div>
+          </div>
+          <div class="col-xl-7 col-lg-6 col-md-12 text-lg-end text-center">
+            <img src="{%static 'images/logo.png'%}" alt="hero img" class="img-fluid" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-4 shadow-sm">
+      <div class="container">
+        <div class="row align-items-center g-0">
+          <!-- Features -->
+          <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-4">
+            <div class="d-flex align-items-center">
+              <span class="icon-shape icon-lg bg-light-warning rounded-circle text-center text-dark-warning fs-4">
+                <i class="fe fe-video"></i>
+              </span>
+              <div class="ms-3">
+                <h4 class="mb-0 fw-semibold">1000+ trending stocks</h4>
+                <p class="mb-0">Enjoy a variety of trending stocks</p>
+              </div>
+            </div>
+          </div>
+          <!-- Features -->
+          <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-4">
+            <div class="d-flex align-items-center">
+              <span class="icon-shape icon-lg bg-light-warning rounded-circle text-center text-dark-warning fs-4">
+                <i class="fe fe-users"></i>
+              </span>
+              <div class="ms-3">
+                <h4 class="mb-0 fw-semibold">Expert instruction</h4>
+                <p class="mb-0">Get the right insights of stocks</p>
+              </div>
+            </div>
+          </div>
+          <!-- Features -->
+          <div class="col-xl-4 col-lg-4 col-md-12">
+            <div class="d-flex align-items-center">
+              <span class="icon-shape icon-lg bg-light-warning rounded-circle text-center text-dark-warning fs-4">
+                <i class="fe fe-clock"></i>
+              </span>
+              <div class="ms-3">
+                <h4 class="mb-0 fw-semibold">Stocks predictor</h4>
+                <p class="mb-0">Assist with right stocks with our predictor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Content -->
+
+    <section id="trendingSection" class="pt-lg-8 pb-lg-3 pt-5 pb-6">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="mb-0">Trending Stocks</h2>
+          </div>
+        </div>
+        <div class="position-relative">
+          <ul class="controls" id="sliderFirstControls">
+            <li class="prev">
+              <i class="fe fe-chevron-left"></i>
+            </li>
+            <li class="next">
+              <i class="fe fe-chevron-right"></i>
+            </li>
+          </ul>
+          <div class="sliderFirst">
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="pages/course-single.html"><img src="{%static 'images/amazonstock.jpg'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="pages/course-single.html" class="text-inherit">Amazon Trending Stocks</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <i class="fa-brands fa-amazon"></i>
+                      </span>
+                      <span>174.63 USD</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                      </svg>
+                      Moderate risk
+                    </li>
+                  </ul>
+                  <div class="lh-1">
+                    <span class="align-text-top">
+                      <span class="fs-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
+                    </span>
+                    <span class="text-warning">4</span>
+                    <span class="fs-6">(7,700)</span>
+                  </div>
+
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-brands fa-amazon"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Amazon Stocks</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="pages/course-single.html"><img src="{%static 'images/applestock.jpg'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="pages/course-single.html" class="text-inherit">Apple Trending Stocks</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <i class="fa-brands fa-apple"></i>
+                      </span>
+                      <span>165.00 USD</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                      </svg>
+                      Moderate risk
+                    </li>
+                  </ul>
+                  <div class="lh-1">
+                    <span class="align-text-top">
+                      <span class="fs-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
+                    </span>
+                    <span class="text-warning">4</span>
+                    <span class="fs-6">(4,560)</span>
+                  </div>
+
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-brands fa-apple"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Apple Stocks</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="pages/course-single.html"><img src="{%static 'images/flipkartstock.png'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="pages/course-single.html" class="text-inherit">Flipkart Trending Stocks</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </span>
+                      <span>Rs 2,31,001</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                      </svg>
+                      Moderate risk
+                    </li>
+                  </ul>
+                  <div class="lh-1">
+                    <span class="align-text-top">
+                      <span class="fs-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
+                    </span>
+                    <span class="text-warning">4</span>
+                    <span class="fs-6">(3,500)</span>
+                  </div>
+
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Flipkart Stocks</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="pages/course-single.html"><img src="{%static 'images/microsoftstock.jpg'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="pages/course-single.html" class="text-inherit">Microsoft Trending Stocks</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <i class="fa-brands fa-windows"></i>
+                      </span>
+                      <span>399.12 USD</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                      </svg>
+                      Moderate risk
+                    </li>
+                  </ul>
+                  <div class="lh-1">
+                    <span class="align-text-top">
+                      <span class="fs-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
+                    </span>
+                    <span class="text-warning">4</span>
+                    <span class="fs-6">(7,700)</span>
+                  </div>
+
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-brands fa-windows"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Microsoft Stocks</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="pages/course-single.html"><img src="{%static 'images/juspaystocks.png'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="pages/course-single.html" class="text-inherit">Paypal Trending Stocks</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <i class="fa-brands fa-paypal"></i>
+                      </span>
+                      <span>62.31 USD</span>
+                    </li>
+                    <li class="list-inline-item">
+                      <svg class="me-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                      </svg>
+                      Moderate risk
+                    </li>
+                  </ul>
+                  <div class="lh-1">
+                    <span class="align-text-top">
+                      <span class="fs-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                      </span>
+                    </span>
+                    <span class="text-warning">4</span>
+                    <span class="fs-6">(9,500)</span>
+                  </div>
+
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-brands fa-paypal"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Paypal Stocks</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="samplestock" class="container pt-lg-8 pb-lg-3 pt-5 pb-6">
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="mb-0">Sample Predictions</h2>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <!-- Card header -->
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">Predictions</h4>
+          <!-- Dropdown -->
+          <div class="dropdown dropstart">
+            <a class="btn-icon btn btn-ghost btn-sm rounded-circle" href="#" role="button" id="paymentDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fe fe-more-vertical"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="paymentDropdown">
+              <span class="dropdown-header">Setting</span>
+              <a class="dropdown-item" href="#">30 Days</a>
+              <a class="dropdown-item" href="#">2 Months</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-12 col-12 mb-3 mb-lg-0">
+              <div>
+                <i class="fe fe-shopping-cart icon-shape icon-sm rounded-3 bg-light-success text-dark-success mt-2"></i>
+                <h3 class="display-4 fw-bold mt-3 mb-0">$3,210</h3>
+                <span>Stocks Performance</span>
+                <hr class="my-4">
+                <div class="row">
+                  <!-- Total earning chart -->
+                  <div class="col ps-0">
+                    <div id="totalEarning" class="apex-charts mt-n4 mb-n3"></div>
+                  </div>
+                  <div class="col-auto">
+                    <span class="badge bg-success">
+                      <i class="fe fe-trending-up fs-6 me-2"></i>
+                      32%
+                    </span>
+                  </div>
+                </div>
+                <p class="mb-0 lh-1.5">Stocks Performance graph</p>
+              </div>
+            </div>
+            <!-- Earning chart -->
+            <div class="col-xl-9 col-lg-8 col-md-12 col-12">
+              <div id="earning" class="apex-charts"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section id="news" class="pb-lg-3 pt-lg-3">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="mb-0">Trending News Section</h2>
+          </div>
+        </div>
+        <div class="position-relative">
+          <ul class="controls" id="sliderSecondControls">
+            <li class="prev">
+              <i class="fe fe-chevron-left"></i>
+            </li>
+            <li class="next">
+              <i class="fe fe-chevron-right"></i>
+            </li>
+          </ul>
+          <div class="sliderSecond">
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="#news"><img src="{%static 'images/news1.webp'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="#news" class="text-inherit">Tata Elxsi, Tata Consumer, ICICI Prudential Life and MCX shares turn volatile ahead of Q4 results today</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock align-baseline" viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>
+                      </span>
+                      <span>3h 56m</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Stocks Buddy</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="#news"><img src="{%static 'images/news2.webp'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="#news" class="text-inherit">Asian Paints, IOC, Apollo Tyres, HPCL, IndiGo & BPCL shares fall up 4% as crude oil price spikes amid Iran-Israel conflict</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock align-baseline" viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>
+                      </span>
+                      <span>5h 23m</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Stocks Buddy</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="#news"><img src="{%static 'images/news3.avif'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="#news" class="text-inherit">3 top-performing Nifty stocks delivered over 100% return in 1 year; what's ahead?</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock align-baseline" viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>
+                      </span>
+                      <span>16h 56m</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Stocks Buddy</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="#news"><img src="{%static 'images/news4.webp'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="#news" class="text-inherit">Motilal's top stock picks ahead of Lok Sabha elections 2024</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock align-baseline" viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>
+                      </span>
+                      <span>23h 34m</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Stocks Buddy</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- Card -->
+              <div class="card mb-4 card-hover">
+                <a href="#news"><img src="{%static 'images/news5.webp'%}" alt="course" class="card-img-top" /></a>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h4 class="mb-2 text-truncate-line-2"><a href="#news" class="text-inherit">IREDA, RBL Bank, Aster DM, Tata Chemicals, NLC India: Midcap shares that MFs bought & sold in March</a></h4>
+                  <!-- List -->
+                  <ul class="mb-3 list-inline">
+                    <li class="list-inline-item">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-clock align-baseline" viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                        </svg>
+                      </span>
+                      <span>12h 5m</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Card Footer -->
+                <div class="card-footer">
+                  <div class="row align-items-center g-0">
+                    <div class="col-auto">
+                      <i class="fa-solid fa-dharmachakra"></i>
+                    </div>
+                    <div class="col ms-2">
+                      <span>Stocks Buddy</span>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="text-reset bookmark">
+                        <i class="fe fe-bookmark fs-4"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center g-0 border-top py-2">
+        <!-- Desc -->
+        <div class="col-md-6 col-12 text-center text-md-start">
+          <span>
+            <span id="copyright">
+              <script>
+                document.getElementById("copyright").appendChild(document.createTextNode(new Date().getFullYear()));
+              </script>
+            </span>
+            Geeks. All Rights Reserved.
+          </span>
+        </div>
+        <!-- Links -->
+        <div class="col-12 col-md-6">
+          <nav class="nav nav-footer justify-content-center justify-content-md-end">
+            <a class="nav-link active ps-0" href="#!">Privacy</a>
+            <a class="nav-link" href="#!">Terms</a>
+            <a class="nav-link" href="#!">Feedback</a>
+            <a class="nav-link" href="#!">Support</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll top -->
+  <div class="btn-scroll-top">
+    <svg class="progress-square svg-content" width="100%" height="100%" viewBox="0 0 40 40">
+      <path d="M8 1H32C35.866 1 39 4.13401 39 8V32C39 35.866 35.866 39 32 39H8C4.13401 39 1 35.866 1 32V8C1 4.13401 4.13401 1 8 1Z" />
+    </svg>
+  </div>
+
+  <!-- Scripts -->
+
+  <script src="{%static 'geeks/dist/assets/libs/@popperjs/core/dist/umd/popper.min.js'%}"></script>
+  <script src="{%static 'geeks/dist/assets/libs/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+  <script src="{%static 'geeks/dist/assets/libs/simplebar/dist/simplebar.min.js'%}"></script>
+
+  <!-- Theme JS -->
+  <script src="{%static 'geeks/dist/assets/js/theme.min.js'%}"></script>
+
+  <script src="{%static 'geeks/dist/assets/libs/tiny-slider/dist/min/tiny-slider.js'%}"></script>
+
+  <script src="{%static 'geeks/dist/assets/libs/tippy.js/dist/tippy-bundle.umd.min.js'%}"></script>
+  <script src="{%static 'geeks/dist/assets/js/vendors/tnsSlider.js'%}"></script>
+  <script src="{%static './assets/js/vendors/tooltip.js'%}"></script>
+
+  <script src="{%static 'geeks/dist/assets/libs/apexcharts/dist/apexcharts.min.js'%}"></script>
+  <script src="{%static 'geeks/dist/assets/js/vendors/chart.js'%}"></script>
+
+</body>
+
+</html>

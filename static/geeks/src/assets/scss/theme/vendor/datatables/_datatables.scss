@@ -1,0 +1,227 @@
+// Extended SCSS from dataTables
+
+table.dataTable {
+	clear: both;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	max-width: none !important;
+	border-collapse: separate !important;
+
+	td,
+	th {
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+
+		&.dataTables_empty {
+			text-align: center;
+		}
+	}
+
+	// Style options for the table. Foundation provides its own, but it is also
+	// useful to have a few more for DataTables
+	&.nowrap {
+		th,
+		td {
+			white-space: nowrap;
+		}
+	}
+
+	// Override default row striping, replacing with an insert box-shadow
+	&.table-striped > tbody > tr:nth-of-type(2n + 1) {
+		background-color: transparent;
+	}
+}
+
+// DataTables' built in feature elements
+div.dataTables_wrapper {
+	div.dataTables_length {
+		padding: 16px 24px;
+		label {
+			font-weight: normal;
+			text-align: left;
+			white-space: nowrap;
+		}
+
+		select {
+			width: 80px;
+			display: inline-block;
+		}
+	}
+
+	div.dataTables_filter {
+		text-align: right;
+		padding-right: 1.5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
+		label {
+			font-weight: normal;
+			white-space: nowrap;
+			text-align: left;
+		}
+
+		input {
+			margin-left: 0.5em;
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	div.dataTables_info {
+		padding: 1rem !important;
+		white-space: nowrap;
+		padding-left: 1.5rem;
+	}
+
+	div.dataTables_paginate {
+		margin: 0;
+		white-space: nowrap;
+		text-align: right;
+		padding: 0.75rem;
+
+		ul.pagination {
+			margin: 12px 24px;
+			white-space: nowrap;
+			.page-item {
+				margin-left: 0.25rem;
+			}
+		}
+	}
+
+	div.dataTables_processing {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 200px;
+		margin-left: -100px;
+		margin-top: -26px;
+		text-align: center;
+		padding: 1em 0;
+	}
+}
+
+// Scrolling
+div.dataTables_scrollHead table.dataTable {
+	margin-bottom: 0 !important;
+}
+
+div.dataTables_scrollBody {
+	> table {
+		border-top: none;
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+
+		> thead {
+			// Hide sort icons
+			.sorting:after,
+			.sorting_asc:after,
+			.sorting_desc:after {
+				display: none;
+			}
+		}
+
+		> tbody > tr:first-child > th,
+		> tbody > tr:first-child > td {
+			border-top: none;
+		}
+	}
+}
+
+div.dataTables_scrollFoot {
+	> .dataTables_scrollFootInner {
+		box-sizing: content-box;
+
+		> table {
+			margin-top: 0 !important;
+			border-top: none;
+		}
+	}
+}
+
+// Responsive
+@media screen and (max-width: 767px) {
+	div.dataTables_wrapper {
+		div.dataTables_length,
+		div.dataTables_filter,
+		div.dataTables_info,
+		div.dataTables_paginate {
+			text-align: center;
+		}
+	}
+}
+
+//
+// Bootstrap provides a range of styling options for table's via class name
+// that we want to full support. They sometimes require some customisations
+//
+
+// Condensed
+table.dataTable.table-condensed {
+	> thead > tr > th {
+		padding-right: 20px;
+	}
+}
+
+// Frustratingly the border-collapse:collapse used by Bootstrap makes the column
+// width calculations when using scrolling impossible to align columns. We have
+// to use `border-collapse: separate`
+table.table-bordered.dataTable {
+	border-right-width: 0;
+
+	th,
+	td {
+		border-left-width: 0;
+
+		&:last-child,
+		&:last-child {
+			border-right-width: 1px;
+		}
+	}
+
+	tbody th,
+	tbody td {
+		border-bottom-width: 0;
+	}
+}
+
+// Bordered table
+div.dataTables_scrollHead table.table-bordered {
+	border-bottom-width: 0;
+}
+
+// Responsive tables. We use rows inside the Bootstrap responsive wrapper,
+// so they need to have their margin and padding removed
+div.table-responsive > div.dataTables_wrapper > div.row {
+	margin: 0;
+
+	> div[class^="col-"] {
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}
+div.dt-buttons {
+	position: initial;
+	display: block;
+	.btn {
+		border-radius: 0.375rem !important;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	div.dt-buttons {
+		float: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 0.5em;
+		flex-wrap: nowrap !important;
+		overflow-x: auto;
+	}
+}
+
+table.dataTable.table-hover > tbody > tr:hover > * {
+	box-shadow: inset 0 0 0 9999px rgb(241, 245, 249, 1);
+}

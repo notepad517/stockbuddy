@@ -1,0 +1,5 @@
+// Simple Scrollbar
+
+.simplebar-scrollbar::before {
+    background-color: var(--#{$prefix}gray-700);
+}

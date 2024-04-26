@@ -1,0 +1,684 @@
+// Quill Editor
+
+.ql-container {
+  box-sizing: border-box;
+  font-family: $font-family-base;
+  font-size: 13px;
+  height: initial;
+  margin: 0px;
+  position: relative;
+}
+
+.ql-editor {
+  box-sizing: border-box;
+  line-height: 2;
+  height: 100%;
+  outline: none;
+  overflow-y: auto;
+  padding: 12px 15px;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0px 0px 35px;
+  > * {
+    cursor: text;
+  }
+
+  ul[data-checked="true"] {
+    pointer-events: none;
+    > li {
+      * {
+        pointer-events: all;
+      }
+      &::before {
+        color: var(--#{$prefix}gray-600);
+        cursor: pointer;
+        pointer-events: all;
+        content: "\2611";
+      }
+    }
+  }
+  ul[data-checked="false"] {
+    pointer-events: none;
+    > li {
+      * {
+        pointer-events: all;
+      }
+      &::before {
+        color: var(--#{$prefix}gray-600);
+        cursor: pointer;
+        pointer-events: all;
+        content: "\2610";
+      }
+    }
+  }
+
+  .ql-bg-black {
+    background-color: var(--#{$prefix}dark);
+  }
+  .ql-bg-red {
+    background-color: var(--#{$prefix}danger);
+  }
+  .ql-bg-orange {
+    background-color: var(--#{$prefix}danger);
+  }
+  .ql-bg-yellow {
+    background-color: var(--#{$prefix}danger);
+  }
+  .ql-bg-green {
+    background-color: var(--#{$prefix}success);
+  }
+  .ql-bg-blue {
+    background-color: var(--#{$prefix}primary);
+  }
+  .ql-bg-purple {
+    background-color: var(--#{$prefix}secondary);
+  }
+  .ql-color-white {
+    color: var(--#{$prefix}white);
+  }
+  .ql-color-red {
+    color: var(--#{$prefix}danger);
+  }
+  .ql-color-orange {
+    color: $orange;
+  }
+  .ql-color-yellow {
+    color: var(--#{$prefix}warning);
+  }
+  .ql-color-green {
+    color: var(--#{$prefix}success);
+  }
+  .ql-color-blue {
+    color: var(--#{$prefix}primary);
+  }
+  .ql-color-purple {
+    color: var(--#{$prefix}secondary);
+  }
+  .ql-font-serif {
+    font-family: $font-family-base;
+  }
+}
+
+.ql-editor.ql-blank {
+  &::before {
+    color: var(--#{$prefix}dark);
+  }
+}
+
+.ql-snow.ql-toolbar {
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 24px;
+    padding: 3px 5px;
+    width: 28px;
+    svg {
+      float: left;
+      height: 100%;
+    }
+    &:active {
+      &:hover {
+        outline: none;
+      }
+    }
+    &:hover {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+    &:focus {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+  }
+  input.ql-image[type="file"] {
+    display: none;
+  }
+  button.ql-active {
+    color: var(--#{$prefix}primary);
+    .ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke.ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke {
+      stroke: var(--#{$prefix}primary);
+    }
+    .ql-stroke-miter {
+      stroke: var(--#{$prefix}primary);
+    }
+  }
+  .ql-picker-label {
+    &:hover {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+  }
+  .ql-picker-label.ql-active {
+    color: var(--#{$prefix}primary);
+    .ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke.ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke {
+      stroke: var(--#{$prefix}primary);
+    }
+    .ql-stroke-miter {
+      stroke: var(--#{$prefix}primary);
+    }
+  }
+  .ql-picker-item {
+    &:hover {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+  }
+  .ql-picker-item.ql-selected {
+    color: var(--#{$prefix}primary);
+    .ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke.ql-fill {
+      fill: var(--#{$prefix}primary);
+    }
+    .ql-stroke {
+      stroke: var(--#{$prefix}primary);
+    }
+    .ql-stroke-miter {
+      stroke: var(--#{$prefix}primary);
+    }
+  }
+}
+
+.ql-snow {
+  .ql-toolbar {
+    &:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      float: left;
+      height: 24px;
+      padding: 3px 5px;
+      width: 28px;
+      svg {
+        float: left;
+        height: 100%;
+      }
+      &:active {
+        &:hover {
+          outline: none;
+        }
+      }
+      &:hover {
+        color: var(--#{$prefix}primary);
+        .ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke.ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke {
+          stroke: var(--#{$prefix}primary);
+        }
+        .ql-stroke-miter {
+          stroke: var(--#{$prefix}primary);
+        }
+      }
+      &:focus {
+        color: var(--#{$prefix}primary);
+        .ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke.ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke {
+          stroke: var(--#{$prefix}primary);
+        }
+        .ql-stroke-miter {
+          stroke: var(--#{$prefix}primary);
+        }
+      }
+    }
+    input.ql-image[type="file"] {
+      display: none;
+    }
+    button.ql-active {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+    .ql-picker-label {
+      &:hover {
+        color: var(--#{$prefix}primary);
+        .ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke.ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke {
+          stroke: var(--#{$prefix}primary);
+        }
+        .ql-stroke-miter {
+          stroke: var(--#{$prefix}primary);
+        }
+      }
+    }
+    .ql-picker-label.ql-active {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+    .ql-picker-item {
+      &:hover {
+        color: var(--#{$prefix}primary);
+        .ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke.ql-fill {
+          fill: var(--#{$prefix}primary);
+        }
+        .ql-stroke {
+          stroke: var(--#{$prefix}primary);
+        }
+        .ql-stroke-miter {
+          stroke: var(--#{$prefix}primary);
+        }
+      }
+    }
+    .ql-picker-item.ql-selected {
+      color: var(--#{$prefix}primary);
+      .ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke.ql-fill {
+        fill: var(--#{$prefix}primary);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}primary);
+      }
+      .ql-stroke-miter {
+        stroke: var(--#{$prefix}primary);
+      }
+    }
+  }
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+  .ql-hidden {
+    display: none;
+  }
+  .ql-out-bottom {
+    visibility: hidden;
+  }
+  .ql-out-top {
+    visibility: hidden;
+  }
+  .ql-tooltip {
+    position: absolute;
+    transform: translateY(10px);
+    background-color: var(--#{$prefix}white);
+    border: 1px solid var(--#{$prefix}gray-400);
+    box-shadow: 0px 0px 5px var(--#{$prefix}gray-300);
+    color: var(--#{$prefix}gray-600);
+    padding: 5px 12px;
+    white-space: nowrap;
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 26px;
+    }
+    &::before {
+      content: "Visit URL:";
+      line-height: 26px;
+      margin-right: 8px;
+    }
+    input[type="text"] {
+      display: none;
+      border: 1px solid var(--#{$prefix}gray-200);
+      font-size: 13px;
+      height: 26px;
+      margin: 0px;
+      padding: 3px 5px;
+      width: 170px;
+    }
+    a.ql-preview {
+      display: inline-block;
+      max-width: 200px;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      vertical-align: top;
+    }
+    a.ql-action {
+      &::after {
+        border-right: 1px solid var(--#{$prefix}gray-200);
+        content: "Edit";
+        margin-left: 16px;
+        padding-right: 8px;
+      }
+    }
+    a.ql-remove {
+      &::before {
+        content: "Remove";
+        margin-left: 8px;
+      }
+    }
+  }
+  .ql-tooltip.ql-flip {
+    transform: translateY(-10px);
+  }
+  .ql-formats {
+    display: inline-block;
+    vertical-align: middle;
+    &:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+  }
+  .ql-stroke {
+    fill: none;
+    stroke: var(--#{$prefix}gray-700);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+  .ql-stroke-miter {
+    fill: none;
+    stroke: var(--#{$prefix}gray-700);
+    stroke-miterlimit: 10;
+    stroke-width: 2;
+  }
+  .ql-fill {
+    fill: var(--#{$prefix}gray-700);
+  }
+  .ql-stroke.ql-fill {
+    fill: var(--#{$prefix}gray-700);
+  }
+
+  .ql-direction.ql-active {
+    svg {
+      &:last-child {
+        display: inline;
+      }
+      &:first-child {
+        display: none;
+      }
+    }
+  }
+  .ql-editor {
+    blockquote {
+      border-left: 4px solid var(--#{$prefix}gray-200);
+    }
+    code {
+      background-color: var(--#{$prefix}light);
+    }
+    pre {
+      background-color: var(--#{$prefix}light);
+      border-radius: 3px;
+    }
+    pre.ql-syntax {
+      background-color: var(--#{$prefix}dark);
+      color: var(--#{$prefix}gray-300);
+      overflow: visible;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  .ql-picker {
+    color: var(--#{$prefix}gray-600);
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    font-weight: 500;
+    height: 24px;
+    position: relative;
+    vertical-align: middle;
+    &:not(.ql-color-picker) {
+      &:not(.ql-icon-picker) {
+        svg {
+          position: absolute;
+          margin-top: -9px;
+          right: 0;
+          top: 50%;
+          width: 18px;
+        }
+      }
+    }
+  }
+
+  .ql-picker-options {
+    background-color: var(--#{$prefix}white);
+    display: none;
+    min-width: 100%;
+    padding: 4px 8px;
+    position: absolute;
+    white-space: nowrap;
+  }
+  .ql-picker.ql-expanded {
+    .ql-picker-label {
+      color: var(--#{$prefix}gray-200);
+      z-index: 2;
+      .ql-fill {
+        fill: var(--#{$prefix}gray-200);
+      }
+      .ql-stroke {
+        stroke: var(--#{$prefix}gray-200);
+      }
+    }
+  }
+  .ql-color-picker {
+    width: 28px;
+    .ql-picker-label {
+      padding: 2px 4px;
+      svg {
+        right: 4px;
+      }
+    }
+    .ql-picker-options {
+      padding: 3px 5px;
+      width: 152px;
+    }
+    .ql-picker-item {
+      border: 1px solid transparent;
+      float: left;
+      height: 16px;
+      margin: 2px;
+      padding: 0px;
+      width: 16px;
+    }
+  }
+
+  .ql-color-picker.ql-background {
+    .ql-picker-item {
+      background-color: var(--#{$prefix}white);
+    }
+  }
+  .ql-color-picker.ql-color {
+    .ql-picker-item {
+      background-color: var(--#{$prefix}dark);
+    }
+  }
+
+  a {
+    color: var(--#{$prefix}primary);
+  }
+}
+
+.ql-toolbar.ql-snow {
+  box-sizing: border-box;
+  font-family: $font-family-base;
+  padding: 8px;
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+  background-color: var(--#{$prefix}white);
+  border: 1px solid var(--#{$prefix}border-color);
+  .ql-formats {
+    margin-right: 15px;
+  }
+  .ql-picker-label {
+    border: 1px solid transparent;
+  }
+  .ql-picker-options {
+    border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
+  }
+  .ql-picker.ql-expanded {
+    .ql-picker-label {
+      border-color: var(--#{$prefix}gray-200);
+    }
+    .ql-picker-options {
+      border-color: var(--#{$prefix}gray-200);
+    }
+  }
+  .ql-color-picker {
+    .ql-picker-item.ql-selected {
+      border-color: var(--#{$prefix}dark);
+    }
+    .ql-picker-item {
+      &:hover {
+        border-color: var(--#{$prefix}dark);
+      }
+    }
+  }
+  & + .ql-container.ql-snow {
+    border-top: 0px;
+  }
+}
+
+.ql-container.ql-snow {
+  border: 1px solid var(--#{$prefix}border-color);
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+}
+
+@media (pointer: coarse) {
+  .ql-snow.ql-toolbar {
+    button {
+      &:hover {
+        &:not(.ql-active) {
+          color: var(--#{$prefix}gray-600);
+          .ql-fill {
+            fill: var(--#{$prefix}gray-700);
+          }
+          .ql-stroke.ql-fill {
+            fill: var(--#{$prefix}gray-700);
+          }
+          .ql-stroke {
+            stroke: var(--#{$prefix}gray-700);
+          }
+          .ql-stroke-miter {
+            stroke: var(--#{$prefix}gray-700);
+          }
+        }
+      }
+    }
+  }
+  .ql-snow {
+    .ql-toolbar {
+      button {
+        &:hover {
+          &:not(.ql-active) {
+            color: var(--#{$prefix}gray-600);
+            .ql-fill {
+              fill: var(--#{$prefix}gray-700);
+            }
+            .ql-stroke.ql-fill {
+              fill: var(--#{$prefix}gray-700);
+            }
+            .ql-stroke {
+              stroke: var(--#{$prefix}gray-700);
+            }
+            .ql-stroke-miter {
+              stroke: var(--#{$prefix}gray-700);
+            }
+          }
+        }
+      }
+    }
+  }
+}
