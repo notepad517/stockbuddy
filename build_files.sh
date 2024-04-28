@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Activate virtual environment
-source ./virtualenv/bin/activate
+# source ./virtualenv/bin/activate
 
 # Install dependencies
 python3 -m pip install -r requirements.txt
@@ -13,4 +13,4 @@ python3 -m pip install -r requirements.txt
 python3 manage.py collectstatic --noinput
 
 # Deactivate virtual environment
-deactivate
+# deactivate
