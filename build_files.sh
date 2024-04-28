@@ -1,16 +1,19 @@
 #!/bin/bash
 
-# Activate virtual environment
-# source ./virtualenv/bin/activate
+# Create a temporary virtual environment
+python3 -m venv tempenv
+
+# Activate the temporary virtual environment
+source tempenv/bin/activate
 
 # Install dependencies
 python3 -m pip install -r requirements.txt
 
-# # Install psycopg2-binary
-# python3 -m pip install psycopg2-binary==2.9.9
-
 # Collect static files
 python3 manage.py collectstatic --noinput
 
-# Deactivate virtual environment
-# deactivate
+# Deactivate the temporary virtual environment
+deactivate
+
+# Remove the temporary virtual environment
+rm -rf tempenv
