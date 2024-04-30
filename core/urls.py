@@ -8,10 +8,6 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('search/', search),
-    path('predict/<str:ticker_value>/<str:number_of_days>/', predict),
-    path('ticker/', ticker),
-    path('home/',home),
     path('allticket',allticket),
     path('predict',predictticket),
     path('finalresult/<str:ticker_value>/<str:number_of_days>/', finalresult),
